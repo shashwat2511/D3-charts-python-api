@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="static/main.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="heading-tabs col-lg-12">
+            <p>Analysis</p>
+        </div>
+        <div class="settings-sections col-lg-12">
+            <div class="row">
+                <div class=" col-lg-12">
+                    <div class="settings-tabs">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#upload-file" data-toggle="tab" aria-controls="upload-file" aria-selected="true">Upload File</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#col-rel-plot" data-toggle="tab" aria-controls="col-rel-plot" aria-selected="false">Column Relationship Plot</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#forcast-plot" data-toggle="tab" aria-controls="forcast-plot" aria-selected="false">Forcast Plot</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class=" col-lg-12">    
+                    <div class="settings-content">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="upload-file" role="tabpanel" aria-labelledby="upload-file-tab">
+                                <div class="row">
+                                    <div class=" col-lg-3">
+                                        <div class="content-section">
+                                            <form method="POST" enctype="multipart/form-data" action="" id="csvFileUpload">
+                                                <fieldset class="form-group">
+                                                    <div class="custom-file">
+                                                        <label class="" for="csv-files">Select files:</label>
+                                                        <input class="" name="csv-file" id="csv-file" type="file" required>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="includeHeader" name="includeHeader" value="1" Checked>
+                                                        <label class="form-check-label" for="includeHeader">Enable Headers</label>
+                                                    </div>
+                                                    <div class="form-group radio-separators">
+                                                        <label class="form-control-label" for="separators">Separator</label>
+                                                        <ul class="form-control form-control-lg" id="separators">
+                                                            <li>
+                                                                <input id="separators-0" name="separators" type="radio" value="comma" Checked>
+                                                                <label for="separators-0">Comma</label>
+                                                            </li>
+                                                            <li>
+                                                                <input id="separators-1" name="separators" type="radio" value="semicolon">
+                                                                <label for="separators-1">Semicolon</label>
+                                                            </li>
+                                                            <li>
+                                                                <input id="separators-2" name="separators" type="radio" value="tab">
+                                                                <label for="separators-2">Tab</label>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </fieldset>
+                                                <div class="form-group">
+                                                    <input class="btn btn-outline-info" id="upload-file-btn" name="upload-file" type="submit" value="Submit">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class=" col-lg-9">
+                                        <div class="display-return-data"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="col-rel-plot" role="tabpanel" aria-labelledby="col-rel-plot-tab">
+                                <div class="row">
+                                    <div class=" col-lg-3">
+                                        <div class="content-section">
+                                            <form method="POST" enctype="multipart/form-data" action="" id="">
+                                                <fieldset class="form-group">
+                                                    <div class="form-group graph-axis" id="xaxis-menus">
+                                                      <label class="form-control-label" for="xaxis">X-Axis</label>
+                                                       <span id="x-menu"></span>
+                                                    </div>
+
+                                                    <div class="form-group graph-axis">
+                                                      <label class="form-control-label" for="yaxis">Y-Axis</label>
+                                                      <span id="y-menu"></span>
+                                                    </div>
+                                                </fieldset>
+                                                <div class="form-group">
+                                                    <input class="btn btn-outline-info" id="get-plot-btn" name="get-plot" type="submit" value="Submit">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class=" col-lg-9">
+                                        <div class="display-graphs" id="col-rel-plots">
+                                            <!-- <svg width="960" height="500" class=""></svg> -->
+                                            <img class="plot-image" src="" id="plotImage" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="tab-pane fade" id="forcast-plot" role="tabpanel" aria-labelledby="forcast-plot-tab">
+                                <div class="row">
+                                    <div class=" col-lg-3">
+                                        <div class="content-section">
+                                            <form method="POST" enctype="multipart/form-data" action="" id="">
+                                                <fieldset class="form-group">
+                                                    <div class="form-group radio-regions">
+                                                        <label class="form-control-label" for="regions">Select Level</label>
+                                                        <ul class="form-control form-control-lg" id="regions">
+                                                            <li>
+                                                                <input id="region" name="sortby" type="radio" value="comma" Checked>
+                                                                <label for="region">Region</label>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </fieldset>
+                                                <div class="form-group">
+                                                    <input class="btn btn-outline-info" id="sort-by-btn" name="submit-sortby" type="submit" value="Go">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class=" col-lg-9">
+                                        <div class="display-forcast" id="display-forcast">
+                                            <svg width="960" height="500" class=""></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- <script src="static/df.js"></script> -->
+    <script src="static/df.js"></script>
+</body>
+
+</html>
